@@ -1,15 +1,23 @@
 $(document).ready(() => {
-    $('#cart').on('click', () => {
-        $('#cartMenu').show()
-    });
-    $('#account').on('click', () => {
-        $('#accountMenu').show();
-    });
-    $('#help').on('click', () => {
-        $('#helpMenu').show();
-    });
+    $('.menu').on('mouseenter', () => {
+        $('.nav-menu').show();
+    }).on('mouseleave', () => {
+        $('.nav-menu').hide();
+    })
+    $('.btn').on('mouseenter', event => {
+        $('event.currentTarget').addClass('btn-hover')
+    }).on('mouseleave').removeClass('btn-hover');
+    $('.postText').on('keyup', event => {
+        $('.postText').focus();
+        let post = $(event.currentTarget).val();
+        let remaining = 140 - post.length;
+        $('.characters').html(remaining);
+        if (remaining <= 0) {
+            $('.wordcount').addClass('red');
+        } else {
+            $('.wordcount').removeClass('red');
+        }
 
-    $('.dropdown-menu').on('mouseleave', () => {
-        $('.dropdown-menu').hide();
-    });
-})
+
+    })
+});
